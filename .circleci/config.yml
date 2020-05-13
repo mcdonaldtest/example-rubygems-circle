@@ -14,7 +14,8 @@ jobs:
       - run: # Install Ruby dependencies
           name: Bundle Install
           command: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - snyk/monitor
+      - snyk/scan:
+          monitor-on-build: true
 orbs:
   snyk: snyk/snyk@0.0.10
   
