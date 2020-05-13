@@ -15,7 +15,11 @@ jobs:
           name: Bundle Install
           command: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - snyk/scan:
+          fail-on-issues: false
           monitor-on-build: true
+          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app'
+          severity-threshold: high
+          token-variable: SNYK_TOKEN
 orbs:
   snyk: snyk/snyk@0.0.10
   
